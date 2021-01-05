@@ -24,7 +24,7 @@ app.use(
   })
 );
 
-app.all("*", auth);
+//app.all("*", auth);
 
 app.use("/memberships", membershipsRouter);
 app.use("/users", usersRouter);
