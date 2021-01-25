@@ -6,6 +6,7 @@ import {
   validateUser,
 } from "../services/users.js";
 import { generateToken } from "../helpers/generateToken.js";
+import { sendMail } from "../helpers/nodemailler.js";
 
 export const createUser = async (req, res, next) => {
   const { email, name, password } = req.body;
@@ -60,6 +61,20 @@ export const logInUser = async (req, res, next) => {
     res.set("x-auth-token", token).send(user);
   } catch (error) {
     res.send({ error: "Invalid credentials." });
+    next(error);
+  }
+};
+
+export const sendDifferentBrowserMail = async (req, res, next) => {
+  let { browser, os, ip, time, email } = req.body;
+  try {
+    sendMail(
+      email,
+      "Different Browser",
+      `From ${browser} on ${os} with ${ip} in ${time}`
+    );
+    res.send("Mail send");
+  } catch (error) {
     next(error);
   }
 };

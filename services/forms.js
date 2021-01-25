@@ -33,8 +33,11 @@ export const addSubmission = async (userForm, fields) => {
         sendMail(
           emailToSend,
           "Contact mail",
-          `You have a new contact mail from: ${fields.name}\n\n
-            Senders mail address is : ${fields.email} \n\n`
+          `You have a new contact mail: \n
+           Fields:
+           ${fields.name}\n,
+           ${fields.email} \n,
+           ${fields.message} \n`
         );
       });
       resolve(form);

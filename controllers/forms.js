@@ -6,12 +6,15 @@ import {
   removeForm,
   addSubmission,
 } from "../services/forms.js";
+import { generateToken } from "../helpers/generateToken.js";
 
 export const createForm = async (req, res, next) => {
-  const { endPoint } = req.body;
+  const { userId, name } = req.body;
+  let token = generateToken(userId);
   try {
     let newForm = await addForm({
-      endPoint,
+      endPoint: token,
+      name,
     });
     res.json({ newForm });
   } catch (error) {

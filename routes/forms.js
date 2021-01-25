@@ -13,7 +13,7 @@ const router = Router();
 
 router.route("/create").post(createForm);
 router.route("/createSubmission/:endPoint").post(createSubmission);
-router.route("/get").post(getForms);
+router.route("/get").get(getForms);
 router.route("/edit").post(editForm);
 router.route("/delete").post(deleteForm);
 

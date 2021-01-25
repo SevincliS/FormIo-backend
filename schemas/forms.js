@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 
 export const FormSchema = mongoose.Schema({
   endPoint: { type: String, required: true },
+  name: { type: String, required: true },
+  premiumEndPoint: { type: String, required: false },
   fields: { type: Object, required: false },
   notificationEmails: { type: Array, required: false },
   haveCustomMail: { type: Boolean, required: false },
